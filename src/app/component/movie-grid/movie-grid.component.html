@@ -1,0 +1,22 @@
+<app-title-search (searchedChanged)="loadItems($event)"></app-title-search>
+<kendo-grid
+  [data]="gridView"
+  [height]="410"
+  [pageSize]="pageSize"
+  [skip]="skip"
+  [pageable]="true"
+  (pageChange)="pageChange($event)"
+
+>
+  <kendo-grid-column field="title" title="Title">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <div (click)="goToDetail(dataItem.url)" >
+        {{dataItem.title}}
+      </div>
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column field="director" title="Director" width="250">
+  </kendo-grid-column>
+  <kendo-grid-column field="releaseDate" [format]="{ date: 'short' }" title="Release Date">
+  </kendo-grid-column>
+</kendo-grid>

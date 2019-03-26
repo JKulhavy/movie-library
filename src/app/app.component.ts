@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {GetMoviesService} from './service/get-films.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'film-library';
+  title = 'movie-library';
+
+  constructor(private getMoviesService: GetMoviesService) {
+    this.getMoviesService.getMovies('j').subscribe(value => console.log(value));
+  }
 }
